@@ -31,4 +31,4 @@
 
     !	Pop the top value; if it’s 0, skip the next command.
 
-    E       End program execution
+    E	End program execution.
