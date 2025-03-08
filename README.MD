@@ -12,7 +12,6 @@
     s	Swap the top two values on the stack.
     r	Reverse stack.
     b	Push stack size onto the stack
-    &	Pop the top value and store it in a register (if you want to add registers).
     ~	Pop the top value and push it back as a negative.
 
     +	Pop the top two values, add them, and push the result.
