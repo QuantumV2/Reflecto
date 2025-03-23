@@ -7,6 +7,7 @@ class Interpreter:
         self.stack = []
         self.ip = [0,0]
         self.dir = [1,0]
+        self.register = 0
         self.is_running = False
         self.commands = {
             "/": self.do_reflect_slash,
@@ -20,7 +21,7 @@ class Interpreter:
             "s": self.do_swap,
             "r": self.do_reverse,
             "b": self.do_size,
-            "~": self.do_negate,
+            
 
             "+": self.do_add,
             "-": self.do_sub,
@@ -30,6 +31,9 @@ class Interpreter:
             "=": self.do_equ,
             ">": self.do_gts,
             "<": self.do_lts,
+
+            "&": self.do_putregister,
+            "~": self.do_getregister,
 
             "@": self.do_chrprint,
             "#": self.do_numprint,
@@ -88,10 +92,7 @@ class Interpreter:
         if not self.stack:
             return
         self.stack = self.stack[::-1]
-    def do_negate(self):
-        val = self.util_pop_stack()
-        val *= -1
-        self.stack.append(val)
+
 
 
     def do_add(self):
@@ -125,6 +126,13 @@ class Interpreter:
         b = self.util_popstack()
         self.stack.append( int(b < a) )
 
+
+    def do_putregister(self):
+        val = self.util_popstack()
+        self.register = val
+    def do_getregister(self):
+        self.stack.append(self.register)
+        self.register = 0
 
     def do_chrprint(self):
         print(chr(self.util_popstack()), end='')
