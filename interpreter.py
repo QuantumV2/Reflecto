@@ -79,7 +79,7 @@ class Interpreter:
     def do_reflect_random(self):
         self.dir = random.choice([(0,1), (1,0), (0,-1), (-1,0)])
     def do_pop(self):
-        self.util_pop_stack()
+        self.util_popstack()
     def do_dup(self):
         val = self.util_peekstack(-1)
         self.stack.append(val)
